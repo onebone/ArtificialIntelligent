@@ -80,7 +80,7 @@ class Sheep extends BaseEntity implements MovingEntity{
 
   public function getDrops(){
     return [
-      Item::get(Item::WOOL, 0, mt_rand(1, 3))
+      Item::get(Item::WOOL, 0, 1)
     ];
   }
 }
