@@ -62,6 +62,7 @@ class Cow extends BaseEntity implements MovingEntity{
 
   public function getDrops(){
     return [
+      Item::get(Item::LEATHER, 0, mt_rand(0, 2));
       Item::get(Item::RAW_BEEF, 0, mt_rand(1, 3))
     ];
   }
