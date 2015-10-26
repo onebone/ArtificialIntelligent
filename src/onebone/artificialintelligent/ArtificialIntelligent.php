@@ -86,7 +86,7 @@ class ArtificialIntelligent extends PluginBase implements Listener{
 			}
 		}
 
-    $this->getServer()->getScheduler()->scheduleDelayedRepeatingTask(new TickTask($this), 200, 200);
+    $this->getServer()->getScheduler()->scheduleDelayedRepeatingTask(new TickTask($this), 240, 240);
 
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
@@ -122,7 +122,7 @@ class ArtificialIntelligent extends PluginBase implements Listener{
   public function onUpdate($currentTick){
     $spawnLimit = $this->getServer()->getProperty("spawn-limits", ["animals" => 15])["animals"];
 
-    if($spawnLimit >= count($this->entities) and mt_rand(1, 5) === 1){
+    if($spawnLimit >= count($this->entities)){
       $players = $this->getServer()->getOnlinePlayers();
       if(count($players) <= 0) return;
       $player = $players[array_rand($players)];
