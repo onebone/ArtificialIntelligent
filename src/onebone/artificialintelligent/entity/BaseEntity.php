@@ -127,9 +127,4 @@ abstract class BaseEntity extends Living{
   		}*/
     }
   }
-
-  public function getSaveId(){
-    $class = new \ReflectionClass(static::class);
-    return $class->getShortName();
-  }
 }

@@ -44,9 +44,9 @@ class ArtificialIntelligent extends PluginBase implements Listener{
     Item::addCreativeItem(new Item(383, 12));
     Item::addCreativeItem(new Item(383, 13));
 
-    Entity::registerEntity("\\onebone\\artificialintelligent\\entity\\Sheep", true);
-    Entity::registerEntity("\\onebone\\artificialintelligent\\entity\\Pig", true);
-    Entity::registerEntity("\\onebone\\artificialintelligent\\entity\\Cow", true);
+    Entity::registerEntity("onebone\\artificialintelligent\\entity\\Sheep", true); 
+    Entity::registerEntity("onebone\\artificialintelligent\\entity\\Pig", true);
+    Entity::registerEntity("onebone\\artificialintelligent\\entity\\Cow", true);
   }
 
   public function onEnable(){
@@ -93,7 +93,7 @@ class ArtificialIntelligent extends PluginBase implements Listener{
 
   public function onSpawn(EntitySpawnEvent $event){
     $entity = $event->getEntity();
-		
+
     if($entity instanceof Sheep or $entity instanceof Cow or $entity instanceof Pig){
       $this->entities[$entity->getId()] = $entity;
     }
