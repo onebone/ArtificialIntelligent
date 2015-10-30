@@ -23,7 +23,7 @@ class ArtificialIntelligent extends PluginBase implements Listener{
   private $entities = [];
 
   private static $registered;
-
+/*
   public static function createEntity($type, $chunk, $nbt, $spawn = true){
     if(!class_exists("\\onebone\\artificialintelligent\\entity\\".$type)) throw new Exception("Invalid entity given");
     if($nbt === null) throw new Exception("NBT compound cannot be null");
@@ -33,7 +33,7 @@ class ArtificialIntelligent extends PluginBase implements Listener{
       $entity->spawnToAll();
     }
     return $entity;
-  }
+  }*/
 
   public function onLoad(){
     self::$registered = [
@@ -91,29 +91,9 @@ class ArtificialIntelligent extends PluginBase implements Listener{
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
 
-  /*public function onJoin(PlayerJoinEvent $event){
-    $player = $event->getPlayer();
-    $this->createEntity("Sheep", $player->getLevel()->getChunk($player->getX() >> 4, $player->getZ() >> 4), new Compound("", [
-			"Pos" => new Enum("Pos", [
-				new Double("", $player->getX()),
-				new Double("", $player->getY()),
-				new Double("", $player->getZ())
-			]),
-			"Motion" => new Enum("Motion", [
-				new Double("", 0),
-				new Double("", 0),
-				new Double("", 0)
-			]),
-			"Rotation" => new Enum("Rotation", [
-				new Float("", 0),
-				new Float("", 0)
-			]),
-		]));
-  }*/
-
   public function onSpawn(EntitySpawnEvent $event){
     $entity = $event->getEntity();
-
+		
     if($entity instanceof Sheep or $entity instanceof Cow or $entity instanceof Pig){
       $this->entities[$entity->getId()] = $entity;
     }
@@ -131,8 +111,7 @@ class ArtificialIntelligent extends PluginBase implements Listener{
       $z = $player->getZ() + mt_rand(-50, 50);
 
       $y = $player->getLevel()->getHighestBlockAt($x, $z) + 1;
-
-      self::createEntity(self::$registered[array_rand(self::$registered)], $player->getLevel()->getChunk($x >> 4, $z >> 4), new Compound("", [
+			Entity::createEntity(self::$registered[array_rand(self::$registered)], $player->getLevel()->getChunk($x >> 4, $z >> 4), new Compound("", [
   			"Pos" => new Enum("Pos", [
   				new Double("", $x),
   				new Double("", $y),

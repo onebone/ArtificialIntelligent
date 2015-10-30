@@ -91,6 +91,10 @@ abstract class BaseEntity extends Living{
   }
 
   public function kill(){
+		if(!$this->isAlive()){
+			return;
+		}
+
     $pk = new EntityEventPacket();
     $pk->eid = $this->id;
     $pk->event = EntityEventPacket::DEATH_ANIMATION;
