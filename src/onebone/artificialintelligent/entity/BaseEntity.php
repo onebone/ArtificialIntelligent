@@ -43,7 +43,8 @@ abstract class BaseEntity extends Living{
 
       $boundingBox = new AxisAlignedBB(round($this->x - $radius + ($this->motionX * 10)), $this->y, round($this->z - $radius + ($this->motionZ * 10)), round($this->x + $radius + ($this->motionX * 10)), $this->y + $this->height + 1, round($this->z + $radius + ($this->motionZ * 10)));
 
-      $block = $this->getLevel()->getBlock($this->round());
+      $block = $this->getLevel()->getBlock($this->getSide(0));
+
       if(!$block->isSolid()){
         $this->motionY -= $this->gravity;
       }else{
@@ -78,7 +79,7 @@ abstract class BaseEntity extends Living{
       if($rand === 1){
         $this->target = new Vector3($this->x + rand(-8, 8), $this->y, $this->z + rand(-8, 8));
       }elseif($rand > 1 and $rand < 5){
-        $this->yaw = ($this->yaw + rand(-90, 90)) % 180;
+        $this->yaw = max(-180, min(180, ($this->yaw + rand(-90, 90))));
         $this->getLevel()->addEntityMovement($this->chunk->getX(), $this->chunk->getZ(), $this->id, $this->x, $this->y, $this->z, $this->yaw, $this->pitch);
       }
       if(!$this->getLevel()->getBlock($this->round())->isSolid()){
