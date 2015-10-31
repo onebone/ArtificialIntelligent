@@ -41,7 +41,7 @@ abstract class BaseEntity extends Living{
 
       $radius = $this->width / 2;
 
-      $boundingBox = new AxisAlignedBB(round($this->x - $radius + ($this->motionX * 10)), $this->y, round($this->z - $radius + ($this->motionZ * 10)), round($this->x + $radius + ($this->motionX * 10)), $this->y + $this->height + 1, round($this->z + $radius + ($this->motionZ * 10)));
+      $boundingBox = new AxisAlignedBB(round($this->x - $radius + ($this->motionX * 10)), $this->y, round($this->z - $radius + ($this->motionZ * 10)), round($this->x + $radius + ($this->motionX * 10)), ceil($this->y + $this->height), round($this->z + $radius + ($this->motionZ * 10)));
 
       $block = $this->getLevel()->getBlock($this->getSide(0));
 
