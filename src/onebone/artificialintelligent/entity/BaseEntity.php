@@ -91,7 +91,7 @@ abstract class BaseEntity extends Living{
   }
 
   public function kill(){
-		if(!$this->isAlive()){
+		if(!$this->isAlive() or $this->closed){
 			return;
 		}
 

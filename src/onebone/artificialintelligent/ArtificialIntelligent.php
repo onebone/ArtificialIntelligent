@@ -23,17 +23,6 @@ class ArtificialIntelligent extends PluginBase implements Listener{
   private $entities = [];
 
   private static $registered;
-/*
-  public static function createEntity($type, $chunk, $nbt, $spawn = true){
-    if(!class_exists("\\onebone\\artificialintelligent\\entity\\".$type)) throw new Exception("Invalid entity given");
-    if($nbt === null) throw new Exception("NBT compound cannot be null");
-    $class = "\\onebone\\artificialintelligent\\entity\\".$type;
-    $entity = new $class($chunk, $nbt);
-    if($spawn){
-      $entity->spawnToAll();
-    }
-    return $entity;
-  }*/
 
   public function onLoad(){
     self::$registered = [
@@ -44,7 +33,7 @@ class ArtificialIntelligent extends PluginBase implements Listener{
     Item::addCreativeItem(new Item(383, 12));
     Item::addCreativeItem(new Item(383, 13));
 
-    Entity::registerEntity("onebone\\artificialintelligent\\entity\\Sheep", true); 
+    Entity::registerEntity("onebone\\artificialintelligent\\entity\\Sheep", true);
     Entity::registerEntity("onebone\\artificialintelligent\\entity\\Pig", true);
     Entity::registerEntity("onebone\\artificialintelligent\\entity\\Cow", true);
   }
