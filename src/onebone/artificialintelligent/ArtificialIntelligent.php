@@ -4,10 +4,10 @@ namespace onebone\artificialintelligent;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
-use pocketmine\nbt\tag\Compound;
-use pocketmine\nbt\tag\Enum;
-use pocketmine\nbt\tag\Double;
-use pocketmine\nbt\tag\Float;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\ListTag;
+use pocketmine\nbt\tag\DoubleTag;
+use pocketmine\nbt\tag\FloatTag;
 use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\event\entity\EntitySpawnEvent;
@@ -100,20 +100,20 @@ class ArtificialIntelligent extends PluginBase implements Listener{
       $z = $player->getZ() + mt_rand(-50, 50);
 
       $y = $player->getLevel()->getHighestBlockAt($x, $z) + 1;
-			Entity::createEntity(self::$registered[array_rand(self::$registered)], $player->getLevel()->getChunk($x >> 4, $z >> 4), new Compound("", [
-  			"Pos" => new Enum("Pos", [
-  				new Double("", $x),
-  				new Double("", $y),
-  				new Double("", $z)
+			Entity::createEntity(self::$registered[array_rand(self::$registered)], $player->getLevel()->getChunk($x >> 4, $z >> 4), new CompoundTag("", [
+  			"Pos" => new ListTag("Pos", [
+  				new DoubleTag("", $x),
+  				new DoubleTag("", $y),
+  				new DoubleTag("", $z)
   			]),
-  			"Motion" => new Enum("Motion", [
-  				new Double("", 0),
-  				new Double("", 0),
-  				new Double("", 0)
+  			"Motion" => new ListTag("Motion", [
+  				new DoubleTag("", 0),
+  				new DoubleTag("", 0),
+  				new DoubleTag("", 0)
   			]),
-  			"Rotation" => new Enum("Rotation", [
-  				new Float("", 0),
-  				new Float("", 0)
+  			"Rotation" => new ListTag("Rotation", [
+  				new FloatTag("", 0),
+  				new FloatTag("", 0)
   			]),
   		]));
     }

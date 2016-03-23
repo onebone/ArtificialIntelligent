@@ -100,7 +100,7 @@ abstract class BaseEntity extends Living{
     $pk->eid = $this->id;
     $pk->event = EntityEventPacket::DEATH_ANIMATION;
     foreach($this->getLevel()->getPlayers() as $player){
-      $player->dataPacket($pk->setChannel(Network::CHANNEL_WORLD_EVENTS));
+      $player->dataPacket($pk);
     }
 
     parent::kill();
@@ -114,7 +114,7 @@ abstract class BaseEntity extends Living{
   		$pk->eid = $this->id;
   		$pk->event = EntityEventPacket::HURT_ANIMATION;
       foreach($this->getLevel()->getPlayers() as $player){
-        $player->dataPacket($pk->setChannel(Network::CHANNEL_WORLD_EVENTS));
+        $player->dataPacket($pk);
       }
     /*  if($source instanceof EntityDamageByEntityEvent){
   			$e = $source->getDamager();

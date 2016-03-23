@@ -2,4 +2,4 @@ name: ArtificialIntelligent
 version: "0.1"
 author: onebone
 main: onebone\artificialintelligent\ArtificialIntelligent
-api: [1.12.0]
+api: [2.0.0]

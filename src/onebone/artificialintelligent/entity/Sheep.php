@@ -68,7 +68,7 @@ class Sheep extends BaseEntity implements MovingEntity{
         $pk->eid = $this->id;
         $pk->event = $rand === 1 ? EntityEventPacket::EAT_GRASS_ANIMATION : EntityEventPacket::AMBIENT_SOUND;
         foreach($this->getLevel()->getPlayers() as $player){
-          $player->dataPacket($pk->setChannel(Network::CHANNEL_WORLD_EVENTS));
+          $player->dataPacket($pk);
         }
 
         if($rand === 1)
